@@ -44,3 +44,4 @@ def main(string, i):
     return main(string, i + 1)
 print(main("racecar", 0))
 '''
+# Time complexity: O(n/2) and space complexity: O(1) [auxiliary space]
