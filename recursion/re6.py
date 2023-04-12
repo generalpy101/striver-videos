@@ -28,6 +28,27 @@ subseq(arr, 0, [])
 # 4. When the base case is reached, the array to be printed is printed.
 # 5. The function is called with the index of the element to be traversed as 0 and the array to be printed as an empty array.
 '''
+Recursion Tree:
+                              subseq([1,2,3],0,[])
+                                      |
+                     ------------------------------
+                     |                            |
+               subseq([1,2,3],1,[])       subseq([1,2,3],1,[1])
+                     |                            |
+                     |                     --------------------
+                     |                     |                  |
+               subseq([1,2,3],2,[])  subseq([1,2,3],2,[1,2]) subseq([1,2,3],2,[1])
+                                   |                |                  |
+                                   |         ---------         -----------
+                                   |         |       |         |         |
+                               subseq([1,2,3],3,[]) subseq([1,2,3],3,[2]) subseq([1,2,3],3,[])
+                                                     |
+                                            ---------------
+                                            |             |
+                                        subseq([1,2,3],4,[2]) subseq([1,2,3],4,[1,2])
+'''
+# Approah 2:
+'''
 def subseq(arr, i, subarr):
     if i >= len(arr):
         print(subarr)
@@ -45,3 +66,26 @@ subseq(arr, 0, [])
 # 3. We append the element at the index to the subarr array and call the function recursively by incrementing the index by 1.
 # 4. After the recursive call, we remove the element from the subarr array and call the function again by incrementing the index by 1.
 # 5. We call the function with the empty array as subarr by passing 0 as the initial index.
+
+'''
+Recursion tree:
+                              subseq([1,2,3],0,[])
+                                      |
+                     ------------------------------
+                     |                            |
+               subseq([1,2,3],1,[1])       subseq([1,2,3],1,[])
+                     |                            |
+          -------------------            --------------
+          |                 |            |            |
+   subseq([1,2,3],2,[1,2])   subseq([1,2,3],2,[1])  subseq([1,2,3],2,[2])
+          |                 |                         |
+     ---------------   ---------------           --------------
+     |             |   |             |           |            |
+subseq([1,2,3],3,[1,2,3])  subseq([1,2,3],3,[1,2]) subseq([1,2,3],3,[2,3])
+                          |                        |
+                    ---------                  ---------
+                    |       |                  |       |
+               subseq([1,2,3],4,[1,2,3])  subseq([1,2,3],4,[1,2])
+time complexity: 2^n
+space complexity: O(n)
+'''
